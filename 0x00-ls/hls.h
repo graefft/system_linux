@@ -2,6 +2,7 @@
 #define HLS_H
 
 #include <dirent.h>
+#include <errno.h>
 #include <grp.h>
 #include <pwd.h>
 #include <stdio.h>
@@ -13,7 +14,7 @@
 #include <unistd.h>
 
 
-int hls(int argc, char *argv[]);
+unsigned int hls(int argc, char *argv[]);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 
 
