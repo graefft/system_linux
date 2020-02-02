@@ -10,9 +10,9 @@ unsigned int hls(int argc, char *argv[])
 {
 	DIR *dir;
 	struct dirent *dent;
-	char buf[BUFSIZ];
 	char *directory = ".";
 	int i = 1;
+	unsigned int exit_status = 0;
 
 	for (i = 1; i < argc || argc == 1; i++)
 	{
@@ -21,25 +21,42 @@ unsigned int hls(int argc, char *argv[])
 		dir = opendir(directory);
 		if (dir == NULL)
 		{
-			if (errno == ENOENT)
-				sprintf(buf, "hls: cannot access %s", directory);
-			else if (errno == EACCES)
-				sprintf(buf, "hls: cannot open directory %s", directory);
-			perror(buf);
-			exit(2);
+			exit_status = error_handler(directory);
+			continue;
 		}
+		if (argc > 2)
+			printf("%s:\n", argv[i]);
 		while ((dent = readdir(dir)) != NULL)
 		{
 			if (*dent->d_name == '.')
 				continue;
 			printf("%s ", dent->d_name);
 		}
+		if (argv[i + 1] != NULL && opendir(argv[i + 1]) != NULL)
+			printf("\n");
 		printf("\n");
 		closedir(dir);
 		if (argc == 1)
 			break;
 	}
-	return (0);
+	return (exit_status);
+}
+
+/**
+ * error_handler - handles errors for hls
+ * @directory: directory to search in
+ * Return: 2 for failure
+ */
+unsigned int error_handler(char *directory)
+{
+	char buf[BUFSIZ];
+
+	if (errno == ENOENT)
+		sprintf(buf, "hls: cannot access %s", directory);
+	else if (errno == EACCES)
+		sprintf(buf, "hls: cannot open directory %s", directory);
+	perror(buf);
+	return (2);
 }
 
 /**
