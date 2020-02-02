@@ -11,10 +11,10 @@ unsigned int hls(int argc, char *argv[])
 	DIR *dir;
 	struct dirent *dent;
 	char *directory = ".";
-	int i = 1;
+	int i, space;
 	unsigned int exit_status = 0;
 
-	for (i = 1; i < argc || argc == 1; i++)
+	for (i = 1, space = 0; i < argc || argc == 1; i++, space = 0)
 	{
 		if (argc > 1)
 			directory = argv[i];
@@ -30,7 +30,11 @@ unsigned int hls(int argc, char *argv[])
 		{
 			if (*dent->d_name == '.')
 				continue;
-			printf("%s ", dent->d_name);
+			if (space == 1)
+				printf(" %s", dent->d_name);
+			else
+				printf("%s", dent->d_name);
+			space = 1;
 		}
 		if (argv[i + 1] != NULL && opendir(argv[i + 1]) != NULL)
 			printf("\n");
