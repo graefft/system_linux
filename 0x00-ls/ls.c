@@ -11,7 +11,7 @@ unsigned int hls(int argc, char *argv[])
 	DIR *dir;
 	struct dirent *dent;
 	char *directory = ".";
-	int i, space;
+	int i, space, new_line;
 	unsigned int exit_status = 0;
 
 	for (i = 1, space = 0; i < argc || argc == 1; i++, space = 0)
@@ -35,10 +35,12 @@ unsigned int hls(int argc, char *argv[])
 			else
 				printf("%s", dent->d_name);
 			space = 1;
+			new_line = 1;
 		}
+		if (new_line == 1)
+			printf("\n");
 		if (argv[i + 1] != NULL && opendir(argv[i + 1]) != NULL)
 			printf("\n");
-		printf("\n");
 		closedir(dir);
 		if (argc == 1)
 			break;
