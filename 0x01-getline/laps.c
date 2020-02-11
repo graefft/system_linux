@@ -99,6 +99,12 @@ void race_state(int *id, size_t size)
 	car_t *check;
 	size_t i = 0;
 
+	if (size == 0)
+	{
+		free_list(car);
+		return;
+	}
+
 	if (car == NULL)
 	{
 		car = insert_car(&car, id[0]);
