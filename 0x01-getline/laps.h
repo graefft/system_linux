@@ -9,7 +9,7 @@
 /**
  * struct car - singly-linked list
  * @id: ID of car
- * @laps: laps car has completed 
+ * @laps: laps car has completed
  * @next: next car
  */
 typedef struct car
