@@ -29,9 +29,10 @@ void free_list(car_t *head)
 	if (head == NULL)
 		return;
 
-	while (head != NULL)
+	next = head;
+	while (next != NULL)
 	{
-		next = head->next;
+		next = next->next;
 		free(head);
 		head = next;
 	}
@@ -47,6 +48,9 @@ car_t *insert_car(car_t **head, int id)
 {
 	car_t *current = NULL;
 	car_t *new = NULL;
+
+	if (!head)
+		return (NULL);
 
 	new = malloc(sizeof(*new));
 	if (!new)
