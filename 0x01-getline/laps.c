@@ -64,11 +64,19 @@ car_t *insert_car(car_t **head, int id)
 		return (new);
 
 	current = (*head);
-	while (current->next && current->next->id < id)
-		current = current->next;
+	if (id < current->id)
+	{
+		new->next = *head;
+		*head = new;
+	}
+	else
+	{
+		while (current->next && current->next->id < id)
+			current = current->next;
 
-	new->next = current->next;
-	current->next = new;
+		new->next = current->next;
+		current->next = new;
+	}
 	return (*head);
 }
 
