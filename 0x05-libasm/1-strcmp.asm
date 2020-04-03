@@ -14,22 +14,22 @@ BITS 64
 
 asm_strcmp:
 	push	rbp
-	mov 	rbp, rsi
+    mov 	rbp, rsi
 
-	xor 	eax, eax
-    xor 	rcx, rcx
+    xor     eax, eax
+    xor     rcx, rcx
 
 strcmp_loop:
     mov     dl, BYTE [rdi + rcx]
     mov     dh, BYTE [rsi + rcx]
     inc     rcx
     test    dl, dl
-    je		check_s1	; check if s1 is NULL
-	test	dh, dh
-	je		strcmp_above
+    je      check_s1	; check if s1 is NULL
+    test    dh, dh
+	je      strcmp_above
     cmp     dl, dh
     je      strcmp_loop
-    jmp		strcmp_compare
+    jmp     strcmp_compare
 
 check_s1:
 	test 	dh, dh
