@@ -37,21 +37,21 @@ check_s1:
 	jmp		strcmp_below
 
 strcmp_compare:
-	cmp 	dl, dh
-	jl 		strcmp_below
-	jg 		strcmp_above
+	cmp     dl, dh
+	jl  	strcmp_below
+	jg      strcmp_above
 
 strcmp_above:
     xor     dl, dh	; s1 bigger than s2
     inc     eax
-	jmp 	strcmp_end
+    jmp     strcmp_end
 
 strcmp_below:
     xor     dl, dh  ; s1 smaller than s2
     dec     eax
-	jmp 	strcmp_end
+    jmp     strcmp_end
 
 strcmp_end:
-    mov 	rsi, rbp
-	pop 	rbp
-	ret
+    mov     rsi, rbp
+    pop     rbp
+    ret
