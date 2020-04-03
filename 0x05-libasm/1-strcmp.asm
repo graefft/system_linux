@@ -32,13 +32,13 @@ strcmp_loop:
     jmp     strcmp_compare
 
 check_s1:
-    test 	dh, dh
-    je		strcmp_end
-    jmp		strcmp_below
+    test    dh, dh
+    je      strcmp_end
+    jmp     strcmp_below
 
 strcmp_compare:
     cmp     dl, dh
-    jl  	strcmp_below
+    jl      strcmp_below
     jg      strcmp_above
 
 strcmp_above:
