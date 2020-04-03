@@ -6,13 +6,13 @@ BITS 64
 
 asm_strlen:
 
-		sub ecx, ecx
-		sub al, al
-		not ecx
+	sub ecx, ecx
+	sub al, al
+	not ecx
 
-		cld	; clear direction flag
+	cld	; clear direction flag
 repne	scasb
-		not ecx
-		lea eax, [ecx-1]	; load effective address into eax return
+	not ecx
+	lea eax, [ecx-1]	; load effective address into eax return
 
-		ret
+	ret
