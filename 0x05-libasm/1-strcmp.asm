@@ -37,9 +37,9 @@ check_s1:
     jmp		strcmp_below
 
 strcmp_compare:
-	cmp     dl, dh
-	jl  	strcmp_below
-	jg      strcmp_above
+    cmp     dl, dh
+    jl  	strcmp_below
+    jg      strcmp_above
 
 strcmp_above:
     xor     dl, dh	; s1 bigger than s2
