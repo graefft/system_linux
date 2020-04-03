@@ -1,16 +1,8 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;	strcmp.asm
-;;	Thomas Graeff
-;;	Holberton School
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 BITS 64
 
-global asm_strcmp
+	global asm_strcmp
 
-section .text
+	section .text
 
 asm_strcmp:
 	push 	rbp
