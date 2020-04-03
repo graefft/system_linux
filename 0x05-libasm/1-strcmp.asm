@@ -1,3 +1,11 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;	strcmp.asm
+;;	Thomas Graeff
+;;	Holberton School
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 BITS 64
 
 	global asm_strcmp
@@ -10,7 +18,6 @@ asm_strcmp:
 
 	xor		eax, eax
     xor     rcx, rcx
- 
 strcmp_loop:
     mov     dl, BYTE [rdi + rcx]
     mov     dh, BYTE [rsi + rcx]
@@ -37,7 +44,7 @@ strcmp_above:
     xor     dl, dh	; s1 bigger than s2
     inc     eax
 	jmp 	strcmp_end
- 
+
 strcmp_below:
     xor     dl, dh  ; s1 smaller than s2
     dec     eax
