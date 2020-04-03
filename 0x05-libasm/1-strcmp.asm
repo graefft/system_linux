@@ -13,11 +13,12 @@ BITS 64
 	section .text
 
 asm_strcmp:
-	push 	rbp
+	push	rbp
 	mov 	rbp, rsi
 
-	xor		eax, eax
-    xor     rcx, rcx
+	xor 	eax, eax
+    xor 	rcx, rcx
+
 strcmp_loop:
     mov     dl, BYTE [rdi + rcx]
     mov     dh, BYTE [rsi + rcx]
