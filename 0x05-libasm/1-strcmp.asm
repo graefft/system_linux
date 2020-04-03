@@ -13,8 +13,8 @@ BITS 64
 	section .text
 
 asm_strcmp:
-	push	rbp
-    mov 	rbp, rsi
+    push    rbp
+    mov     rbp, rsi
 
     xor     eax, eax
     xor     rcx, rcx
@@ -26,15 +26,15 @@ strcmp_loop:
     test    dl, dl
     je      check_s1	; check if s1 is NULL
     test    dh, dh
-	je      strcmp_above
+    je      strcmp_above
     cmp     dl, dh
     je      strcmp_loop
     jmp     strcmp_compare
 
 check_s1:
-	test 	dh, dh
-	je		strcmp_end
-	jmp		strcmp_below
+    test 	dh, dh
+    je		strcmp_end
+    jmp		strcmp_below
 
 strcmp_compare:
 	cmp     dl, dh
