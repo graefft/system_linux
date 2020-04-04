@@ -4,6 +4,8 @@
 Solved tasks for Holberton School's Linux programming curriculum
 
 ## Files in this project
+FILE | DESCRIPTION
+----|----
 [0. strlen](./0-strlen.asm) | Copy of the function 'strlen' in x86-64 Assembly
 [1. strcmp](./1-strcmp.asm) | Copy of the function 'strcmp' in x86-64 Assembly
 [2. strncmp](./2-strncmp.asm) | Copy of the function 'strncmp' in x86-64 Assembly

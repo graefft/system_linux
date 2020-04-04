@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;;	strncmp.asm
+;;	memcpy.asm
 ;;	Thomas Graeff
 ;;	Holberton School
 ;;
