@@ -23,20 +23,19 @@ asm_memcpy:
 	push    rbp
 	mov     rbp, rsp
     xor     rax, rax
-    push    rbx
+    push    rdi
 
 memcpy_loop:
     test    rdx, rdx
     jz      end
-    mov     al, BYTE[rsi]   ; put byte of SRC into AL
+    mov     al, BYTE [rsi]   ; put byte of SRC into AL
     inc     rsi
-    mov     [rdi], al       ; put byte of AL into DEST
+    mov BYTE [rdi], al       ; put byte of AL into DEST
     inc     rdi
     dec     rdx
     jmp     memcpy_loop
 
 end:
-    pop     rbx
     pop     rax
     mov     rsp, rbp
     pop     rbp
