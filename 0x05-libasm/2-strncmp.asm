@@ -44,24 +44,24 @@ STRNCMP_LOOP:
     jmp     STRNCMP_LOOP
 
 STRNCMP_COMPARE:
-    cmp 	al, bl
-    jl 		STRNCMP_BELOW
-    jg 		STRNCMP_ABOVE
+    cmp     al, bl
+    jl      STRNCMP_BELOW
+    jg      STRNCMP_ABOVE
     je      STRNCMP_EQUAL
 
 STRNCMP_ABOVE:
     mov     rax, 1
-    jmp 	end
+    jmp     end
 
 STRNCMP_BELOW:
     mov     rax, -1
-    jmp 	end
+    jmp     end
 
 STRNCMP_EQUAL:
     mov     rax, 0
 
 end:
     pop     rcx
-    mov 	rsp, rbp
-    pop 	rbp
+    mov     rsp, rbp
+    pop     rbp
     ret
