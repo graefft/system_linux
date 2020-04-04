@@ -1,22 +1,22 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;;	strchr.asm
-;;	Thomas Graeff
-;;	Holberton School
+;;      strchr.asm
+;;      Thomas Graeff
+;;      Holberton School
 ;;
-;;  char *asm_strchr(const char *s, int c);
-;;  - locates character in string
+;;      char *asm_strchr(const char *s, int c);
+;;      - locates character in string
 ;;
-;;  @rdi: *s
-;;  @rsi: c
+;;      @rdi: *s -- string to search in
+;;      @rsi:  c -- character to search for
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 BITS 64
 
-	global asm_strchr
+    global asm_strchr
 
-	section .text
+    section .text
 
 asm_strchr:
 	push    rbp
