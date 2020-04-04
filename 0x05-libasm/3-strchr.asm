@@ -19,8 +19,8 @@ BITS 64
     section .text
 
 asm_strchr:
-	push    rbp
-	mov     rbp, rsp
+    push    rbp
+    mov     rbp, rsp
     xor     rax, rax
 
 strchr_loop:
