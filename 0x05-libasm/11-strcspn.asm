@@ -1,8 +1,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;      strcspn.asm
-;;	    Thomas Graeff
-;;	    Holberton School
+;;      Thomas Graeff
+;;      Holberton School
 ;;
 ;;      size_t asm_strcspn(const char *s, const char *reject);
 ;;      - searches a string for a set of bytes that aren't in string
@@ -21,8 +21,8 @@ BITS 64
 	section .text
 
 asm_strcspn:
-	push    rbp
-	mov     rbp, rsp
+    push    rbp
+    mov     rbp, rsp
 
     push    rcx
     push    r8

@@ -1,8 +1,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;      strspn.asm
-;;	    Thomas Graeff
-;;	    Holberton School
+;;      Thomas Graeff
+;;      Holberton School
 ;;
 ;;      size_t asm_strspn(const char *s, const char *accept);
 ;;      - searches a string for a set of bytes
@@ -17,13 +17,13 @@
 
 BITS 64
 
-	global asm_strspn
+    global asm_strspn
 
-	section .text
+    section .text
 
 asm_strspn:
-	push    rbp
-	mov     rbp, rsp
+    push    rbp
+    mov     rbp, rsp
 
     push    rcx
     push    r8
