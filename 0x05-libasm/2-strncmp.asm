@@ -1,8 +1,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;;	    strncmp.asm
-;;	    Thomas Graeff
-;;	    Holberton School
+;;      strncmp.asm
+;;      Thomas Graeff
+;;      Holberton School
 ;;
 ;;      int asm_strncmp(const char *s1, const char *s2, size_t n);
 ;;      - compares s1 and s2 up to n bytes
@@ -15,13 +15,13 @@
 
 BITS 64
 
-	global asm_strncmp
+    global asm_strncmp
 
-	section .text
+    section .text
 
 asm_strncmp:
-	push    rbp
-	mov     rbp, rsp
+    push    rbp
+    mov     rbp, rsp
 
     xor     rcx, rcx
 
@@ -44,18 +44,18 @@ STRNCMP_LOOP:
     jmp     STRNCMP_LOOP
 
 STRNCMP_COMPARE:
-	cmp 	al, bl
+    cmp 	al, bl
     jl 		STRNCMP_BELOW
-	jg 		STRNCMP_ABOVE
+    jg 		STRNCMP_ABOVE
     je      STRNCMP_EQUAL
 
 STRNCMP_ABOVE:
     mov     rax, 1
-	jmp 	end
+    jmp 	end
 
 STRNCMP_BELOW:
     mov     rax, -1
-	jmp 	end
+    jmp 	end
 
 STRNCMP_EQUAL:
     mov     rax, 0
@@ -63,5 +63,5 @@ STRNCMP_EQUAL:
 end:
     pop     rcx
     mov 	rsp, rbp
-	pop 	rbp
-	ret
+    pop 	rbp
+    ret
