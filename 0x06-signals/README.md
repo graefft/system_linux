@@ -3,6 +3,8 @@
 ## About
 Solved tasks from Holberton School's Linux Programming curriculum
 
+----
+
 ### Description
 What is a signal?  
 Why do they exist?  
@@ -11,10 +13,14 @@ How to set up a handler for a signal
 How to send signals  
 What signals can't be caught  
 
+----
+
 ### Technology Used
 Ubuntu 14.04 LTS  
 gcc 4.8.4  
 [Betty code style](https://github.com/holbertonschool/Betty/blob/master/betty-style.pl)
+
+----
 
 ### Files Used in this project
 FILE | DESCRIPTION
