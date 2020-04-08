@@ -15,16 +15,17 @@ What signals can't be caught
 
 ----
 
-### Technology Used
-Ubuntu 14.04 LTS  
-gcc 4.8.4  
-[Betty code style](https://github.com/holbertonschool/Betty/blob/master/betty-style.pl)
+### Requirements
+* <b>OS:</b>Ubuntu 14.04 LTS  
+* <b>Compiler:</b>gcc 4.8.4 (-Wall -Werror -Wextra -pedantic)
+* <b>Style:</b>[Betty code style](https://github.com/holbertonschool/Betty/blob/master/betty-style.pl)
 
 ----
 
-### Files Used in this project
+### Files
 FILE | DESCRIPTION
 ----|----
+[signals.h](./signals.h) | Header file for project
 [0. Handle Signal](./0-handle_signal.c) | Function that sets a handler for the signal `SIGINT`
 [1. Current Handler - Signal](./1-current_handler_signal.c) | Function that retrieves the current handler of the signal `SIGINT`
 [2. Gotta Catch Them All](./2-handle_sigaction.c) | Function that sets a handler for the signal `SIGINT` where `<signum>` must be replaced with the signal number that was caught
