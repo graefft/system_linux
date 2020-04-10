@@ -14,6 +14,7 @@ void trace_handler(int sig, siginfo_t *siginfo, void *context)
 	(void)context;
 
 	printf("SIGQUIT sent by %d\n", sender_pid);
+	fflush(stdout);
 }
 
 
