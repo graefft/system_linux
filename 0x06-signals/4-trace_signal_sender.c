@@ -26,15 +26,8 @@ int trace_signal_sender(void)
 {
 	struct sigaction act;
 
-	printf("process [%d] started.\n", (int)getpid());
-
 	act.sa_sigaction = trace_handler;
 	act.sa_flags = SA_SIGINFO;
 
-	if (sigaction(SIGQUIT, &act, NULL) != 0)
-	{
-		printf("ERROR ACTION\n");
-		return (-1);
-	}
-	return (0);
+	return (sigaction(SIGQUIT, &act, NULL));
 }
