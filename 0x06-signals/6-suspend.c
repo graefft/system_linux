@@ -11,9 +11,7 @@
 void suspend_handler(int sig)
 {
 	printf("Caught %d\n", sig);
-	printf("Signal received\n");
 	fflush(stdout);
-	exit(EXIT_SUCCESS);
 }
 
 /**
@@ -30,13 +28,13 @@ int handle_signal(void)
 
 /**
  * main - Function that sets a handler for the signal SIGINT
- * Return: 0 on success, -1 on error
+ * Return: EXIT_SUCCESS or EXIT_FAILURE
  */
 int main(void)
 {
 	if (handle_signal() != 0)
 		return (EXIT_FAILURE);
-
 	pause();
+	printf("Signal received\n");
 	return (EXIT_SUCCESS);
 }
