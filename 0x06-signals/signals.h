@@ -26,5 +26,6 @@ void sigset_print(const sigset_t *set);
 int signals_block(int *signals);
 int signals_unblock(int *signals);
 int handle_pending(void (*handler)(int));
+void handler(int signum);
 
 #endif /* __SIGNALS_H__ */
