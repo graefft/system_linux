@@ -11,8 +11,6 @@ int handle_pending(void (*handler)(int))
 	sigset_t pending_signals;
 	int i;
 
-	sigemptyset(&pending_signals);
-
 	pending_action.sa_handler = handler;
 
 	if (sigpending(&pending_signals) < 0)
