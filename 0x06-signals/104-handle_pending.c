@@ -16,7 +16,7 @@ int handle_pending(void (*handler)(int))
 	if (sigpending(&pending_signals) < 0)
 		return (-1);
 
-	for (i = 0; i <= SIGRTMAX; i++)
+	for (i = 1; i <= SIGRTMAX; i++)
 	{
 		if (sigismember(&pending_signals, i))
 		{
