@@ -23,5 +23,8 @@ int signals_unblock(int *signals);
 int handle_pending(void (*handler)(int));
 void all_in_one_handler(int sig, siginfo_t *siginfo, void *context);
 void sigset_print(const sigset_t *set);
+int signals_block(int *signals);
+int signals_unblock(int *signals);
+int handle_pending(void (*handler)(int));
 
 #endif /* __SIGNALS_H__ */
