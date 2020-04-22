@@ -27,6 +27,8 @@ if search_string == '':
 write_string = str(sys.argv[3])
 if write_string == '':
     print_usage()
+if len(write_string) > len(search_string):
+    raise IndexError
 
 map_file_name = '/proc/{}/maps'.format(pid)
 mem_file_name = '/proc/{}/mem'.format(pid)
@@ -80,7 +82,7 @@ for line in map_file:
     try:
         i = heap.index(bytes(search_string, 'ASCII'))
     except Exception:
-        print("Can't find {} at {:x}".format(search_string, i))
+        print("Can't find '{}'".format(search_string))
         map_file.close()
         mem_file.close()
         exit(1)
