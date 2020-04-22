@@ -22,11 +22,7 @@ pid = int(sys.argv[1])
 if pid <= 0:
     print_usage()
 search_string = str(sys.argv[2])
-if search_string == '':
-    print_usage()
 write_string = str(sys.argv[3])
-if write_string == '':
-    print_usage()
 if len(write_string) > len(search_string):
     raise IndexError
 
