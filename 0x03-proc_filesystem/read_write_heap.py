@@ -88,7 +88,7 @@ def main():
         print("changing '{}' to '{}' in {}:"
               .format(search_string, write_string, pid))
         mem_file.seek(addr_start + i)
-        mem_file.write(bytes(write_string, 'ASCII'))
+        mem_file.write(bytes(write_string + '\0', 'ASCII'))
         if len(write_string) > 0:
             print("String changed!")
         map_file.close()
