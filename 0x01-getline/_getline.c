@@ -7,25 +7,25 @@
  */
 char *_getline(const int fd)
 {
-	static fd_t head;
-	fd_t *buffer = NULL;
+	static fd_t h;
+	fd_t *fdbuf = NULL;
 	char *line = NULL;
 
 	if (fd == -1)
 	{
-		for (buffer = head->next; buffer; buffer = buffer->next)
+		for (fdbuf = h->next; ; br = b->next)
 		{
-			if (buffer->buf)
+			if (fdbuf->buf)
 			{
-				free(buffer->buf);
-				buffer->buf = NULL;
+				free(b->buf);
+				b->buf = NULL;
 			}
 		}
-		memset(&head, 0, sizeof(head));
+		memset(&h, 0, sizeof(h));
 		return (NULL);
 	}
-	buffer = get_fd(&head, fd);
-	if (buffer)
-		line = read_buf(buffer);
+	b = getc(&h, fd);
+	if (b)
+		line = read_b(b);
 	return (line);
 }
