@@ -25,7 +25,7 @@ void print_python_string(PyObject *p)
 	else if (!PyUnicode_IS_COMPACT(p))
 		type = "legacty string, ready";
 
-	printf("type: %s\n", type);
-	printf("length: %ld\n", (((PyASCIIObject *)(p))->length));
-	printf("value: %ls\n", (PyUnicode_AsWideCharString(p, NULL)));
+	printf("  type: %s\n", type);
+	printf("  length: %ld\n", (((PyASCIIObject *)(p))->length));
+	printf("  value: %ls\n", (PyUnicode_AsWideCharString(p, NULL)));
 }
