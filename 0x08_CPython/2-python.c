@@ -37,16 +37,16 @@ void print_python_bytes(PyObject *p)
 	printf("[.] bytes object info\n");
 	if (!PyBytes_Check(p))
 	{
-		printf("\t[ERROR] Invalid Bytes Object\n");
+		printf("  [ERROR] Invalid Bytes Object\n");
 		return;
 	}
 	py_bytes_size = (((PyVarObject *)(p))->ob_size);
 	py_bytes_str = (((PyBytesObject *)(p))->ob_sval);
 
-	printf("\tsize: %ld\n", py_bytes_size);
-	printf("\ttrying string: %s\n", py_bytes_str);
+	printf("  size: %ld\n", py_bytes_size);
+	printf("  trying string: %s\n", py_bytes_str);
 	py_bytes_size = py_bytes_size > 9 ? 10 : py_bytes_size;
-	printf("\tfirst %ld bytes: \n", py_bytes_size);
+	printf("  first %ld bytes: \n", py_bytes_size);
 
 	for (i = 0; i < py_bytes_size; i++)
 		printf("%02hhx%c", py_bytes_str[i], i < py_bytes_size ? ' ' : '\n');
