@@ -45,9 +45,9 @@ void print_python_bytes(PyObject *p)
 
 	printf("  size: %ld\n", py_bytes_size);
 	printf("  trying string: %s\n", py_bytes_str);
-	py_bytes_size = py_bytes_size > 9 ? 10 : py_bytes_size;
-	printf("  first %ld bytes: \n", py_bytes_size);
+	py_bytes_size = py_bytes_size > 9 ? 10 : py_bytes_size + 1;
+	printf("  first %ld bytes: ", py_bytes_size);
 
 	for (i = 0; i < py_bytes_size; i++)
-		printf("%02hhx%c", py_bytes_str[i], i < py_bytes_size ? ' ' : '\n');
+		printf("%02hhx%c", py_bytes_str[i], i < py_bytes_size - 1 ? ' ' : '\n');
 }
