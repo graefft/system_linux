@@ -10,5 +10,6 @@
 
 int tracee(char**argv);
 int tracer(pid_t child_pid);
+int wait_for_syscall(pid_t child_pid);
 
 #endif /*__STRACE_H__*/
