@@ -4,8 +4,8 @@ HEADERS = strace.h syscalls.h
 
 .PHONY: clean
 
-strace_0: strace_0.o $(HEADERS)
-		$(CC) $(CFLAGS) -o $@
+strace_0: strace_0.c $(HEADERS)
+		$(CC) $(CFLAGS) strace_0.c -o $@
 
 strace_1: strace_1.o $(HEADERS)
 		$(CC) $(CFLAGS) -o $@ $^
