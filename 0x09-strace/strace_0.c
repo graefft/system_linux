@@ -4,6 +4,7 @@
 /**
  * tracee - traces child
  * @argv: arguments
+ * @env: environment
  * Return: 0 or -1
  */
 int tracee(char **argv, char **env)
@@ -64,6 +65,7 @@ int wait_for_syscall(pid_t pid)
  * main - executes and traces a given command
  * @argc: number of arguments
  * @argv: command to trace
+ * @env: environment
  * Return: 0 on success, -1 on failures
  */
 int main(int argc, char **argv, char **env)
