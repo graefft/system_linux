@@ -80,17 +80,14 @@ int main(int argc, char **argv, char **env)
 	pid = fork();
 	if (pid == 0)
 	{
-		printf("0\n");
 		tracee(argv + 1, env);
 	}
 	else if (pid > 0)
 	{
-		printf("1\n");
 		tracer(pid);
 	}
 	else
 	{
-		printf("2\n");
 		perror("Fork failed");
 		exit(EXIT_FAILURE);
 	}
