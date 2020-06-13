@@ -70,7 +70,7 @@ int main(int argc, char **argv)
 {
 	pid_t pid;
 
-	if (argc != 2)
+	if (argc < 2)
 	{
 		printf("Usage: command\n");
 		return (EXIT_FAILURE);
