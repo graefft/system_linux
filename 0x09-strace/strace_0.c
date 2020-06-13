@@ -22,15 +22,40 @@ int tracee(char **argv)
 int tracer(pid_t pid)
 {
 	int status;
+	struct user_regs_struct reg;
 
 	waitpid(pid, &status, 0);
-	ptrace(PTRACE_SETOPTIONS, pid, 0, PTRACE_0_TRACESYSGOOD);
-	while (WIFEXITED(status))
+	ptrace(PTRACE_SETOPTIONS, pid, 0, PTRACE_O_TRACESYSGOOD);
+	while (1)
+	{
+		if (wait_for_syscall(pid))
+			break;
+		ptrace(PTRACE_GETREGS, pid, 0, &reg);
+		printf("%ld\n", (long) reg.orig_rax);
+		fflush(stdout);
+		if (wait_for_syscall(pid))
+			break;
+	}
+	return (1);
+}
+
+/**
+ * wait_for_syscall - waits for syscall
+ * @pid: child pid
+ * Return: 0 if syscall
+ */
+int wait_for_syscall(pid_t pid)
+{
+	int status;
+
+	while (1)
 	{
 		ptrace(PTRACE_SYSCALL, pid, 0, 0);
 		waitpid(pid, &status, 0);
 		if (WIFSTOPPED(status) && WSTOPSIG(status) & 0x80)
 			return (0);
+		if WIFEXITED(status)
+			return (1);
 	}
 	return (1);
 }
@@ -52,13 +77,20 @@ int main(int argc, char **argv)
 	}
 	pid = fork();
 	if (pid == 0)
+	{
+		printf("0\n");
 		tracee(argv + 1);
+	}
 	else if (pid > 0)
+	{
+		printf("1\n");
 		tracer(pid);
+	}
 	else
 	{
+		printf("2\n");
 		perror("Fork failed");
-		exit(0);
+		exit(EXIT_FAILURE);
 	}
 	return (0);
 }
