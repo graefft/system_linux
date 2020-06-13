@@ -6,11 +6,11 @@
  * @argv: arguments
  * Return: 0 or -1
  */
-int tracee(char **argv)
+int tracee(char **argv, char **env)
 {
 	ptrace(PTRACE_TRACEME, 0, 0, 0);
 	kill(getpid(), SIGSTOP);
-	execve(argv[0], argv, NULL);
+	execve(argv[0], argv, env);
 	return (0);
 }
 
@@ -66,7 +66,7 @@ int wait_for_syscall(pid_t pid)
  * @argv: command to trace
  * Return: 0 on success, -1 on failures
  */
-int main(int argc, char **argv)
+int main(int argc, char **argv, char **env)
 {
 	pid_t pid;
 
@@ -79,7 +79,7 @@ int main(int argc, char **argv)
 	if (pid == 0)
 	{
 		printf("0\n");
-		tracee(argv + 1);
+		tracee(argv + 1, env);
 	}
 	else if (pid > 0)
 	{
