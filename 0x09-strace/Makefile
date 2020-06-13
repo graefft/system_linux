@@ -7,8 +7,8 @@ HEADERS = strace.h syscalls.h
 strace_0: strace_0.c $(HEADERS)
 		$(CC) $(CFLAGS) strace_0.c -o $@
 
-strace_1: strace_1.o $(HEADERS)
-		$(CC) $(CFLAGS) -o $@ $^
+strace_1: strace_1.c $(HEADERS)
+		$(CC) $(CFLAGS) strace_1.c -o $@
 
 strace_2: strace_2.o $(HEADERS)
 		$(CC) $(CFLAGS) -o $@ $^
