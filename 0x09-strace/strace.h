@@ -8,8 +8,8 @@
 #include <sys/user.h>
 #include <sys/wait.h>
 
-int tracee(char**argv, char **env);
-int tracer(pid_t child_pid);
+int trace_child(char**argv, char **env);
+int trace_from_parent(pid_t child_pid);
 int wait_for_syscall(pid_t child_pid);
 
 #endif /*__STRACE_H__*/
