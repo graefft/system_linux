@@ -2,24 +2,25 @@
 #include "syscalls.h"
 
 /**
- * trace_from_child - traces child
+ * trace_me - attaches trace to child
  * @argv: command + options
  * @env: current environment
  * Return: 0 or -1
  */
-int trace_from_child(char **argv, char **env)
+int trace_me(char **argv, char **env)
 {
 	ptrace(PTRACE_TRACEME, 0, NULL, NULL);
+	kill(getpid(), SIGSTOP);
 	execve(argv[0], argv, env);
 	return (0);
 }
 
 /**
- * trace_from_parent - runs tracer from parent
+ * run_tracer - runs tracer from parent
  * @pid: pid of child to be traced
  * Return: 0 on success
  */
-int trace_from_parent(pid_t pid)
+int run_tracer(pid_t pid)
 {
 	int status;
 	struct user_regs_struct reg;
@@ -31,6 +32,7 @@ int trace_from_parent(pid_t pid)
 		if (wait_for_syscall(pid))
 			break;
 		ptrace(PTRACE_GETREGS, pid, 0, &reg);
+		/* ptrace(PTRACE_PEEKUSER, pid, sizeof(long) * ORIG_RAX) */
 		printf("%ld\n", (long) reg.orig_rax);
 		fflush(stdout);
 		if (wait_for_syscall(pid))
@@ -77,11 +79,11 @@ int main(int argc, char **argv, char **env)
 		printf("Usage: command\n");
 		return (EXIT_FAILURE);
 	}
-	pid = fork();
-	if (pid == 0)
-		trace_from_child(argv + 1, env);
-	else if (pid > 0)
-		trace_from_parent(pid);
+	pid = fork(); /* fork returns 0 in child, <child pid> in parent */
+	if (pid > 0)
+		run_tracer(pid);
+	else if (pid == 0)
+		trace_me(argv + 1, env);
 	else
 	{
 		perror("Fork failed");
