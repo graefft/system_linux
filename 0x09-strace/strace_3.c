@@ -41,7 +41,10 @@ int run_tracer(pid_t pid)
 		num_args = syscalls_64_g[(size_t)reg.orig_rax].nb_params;
 		for (i = 0; i < num_args; i++)
 		{
-			printf("%#lx", get_syscall_arg(reg, i));
+			if (syscalls_64_g[(size_t)reg.orig_rax].params[i] == VARARGS)
+				printf("...")
+			else
+				printf("%#lx", get_syscall_arg(reg, i));
 			if (i < num_args - 1)
 				printf(", ");
 		}
