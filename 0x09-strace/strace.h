@@ -8,7 +8,7 @@
 #include <sys/user.h>
 #include <sys/wait.h>
 
-int trace_child(char**argv, char **env);
+int trace_from_child(char **argv, char **env);
 int trace_from_parent(pid_t child_pid);
 int wait_for_syscall(pid_t child_pid);
 

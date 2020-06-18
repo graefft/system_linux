@@ -2,25 +2,24 @@
 #include "syscalls.h"
 
 /**
- * tracee - traces child
- * @argv: arguments
- * @env: environment
+ * trace_from_child - traces child
+ * @argv: command + options
+ * @env: current environment
  * Return: 0 or -1
  */
-int tracee(char **argv, char **env)
+int trace_from_child(char **argv, char **env)
 {
-	ptrace(PTRACE_TRACEME, 0, 0, 0);
-	kill(getpid(), SIGSTOP);
+	ptrace(PTRACE_TRACEME, 0, NULL, NULL);
 	execve(argv[0], argv, env);
 	return (0);
 }
 
 /**
- * tracer - runs tracer from parent
+ * trace_from_parent - runs tracer from parent
  * @pid: pid of child to be traced
  * Return: 0 on success
  */
-int tracer(pid_t pid)
+int trace_from_parent(pid_t pid)
 {
 	int status;
 	struct user_regs_struct reg;
@@ -43,7 +42,7 @@ int tracer(pid_t pid)
 /**
  * wait_for_syscall - waits for syscall
  * @pid: child pid
- * Return: 0 if syscall
+ * Return: 1 if child terminates, -1 on failure, else 0
  */
 int wait_for_syscall(pid_t pid)
 {
@@ -53,12 +52,13 @@ int wait_for_syscall(pid_t pid)
 	{
 		ptrace(PTRACE_SYSCALL, pid, 0, 0);
 		waitpid(pid, &status, 0);
+		/* if child stopped by delivery of signal & syscall */
 		if (WIFSTOPPED(status) && WSTOPSIG(status) & 0x80)
 			return (0);
-		if WIFEXITED(status)
+		if WIFEXITED(status)	/* child terminates normally */
 			return (1);
 	}
-	return (1);
+	return (-1);
 }
 
 /**
@@ -79,13 +79,9 @@ int main(int argc, char **argv, char **env)
 	}
 	pid = fork();
 	if (pid == 0)
-	{
-		tracee(argv + 1, env);
-	}
+		trace_from_child(argv + 1, env);
 	else if (pid > 0)
-	{
-		tracer(pid);
-	}
+		trace_from_parent(pid);
 	else
 	{
 		perror("Fork failed");
