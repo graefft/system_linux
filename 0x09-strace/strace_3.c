@@ -25,6 +25,7 @@ int run_tracer(pid_t pid)
 	const char *syscall;
 	int i, status, num_args = 0;
 	struct user_regs_struct reg;
+	unsigned long arg;
 
 	waitpid(pid, &status, 0);
 	ptrace(PTRACE_SETOPTIONS, pid, 0, PTRACE_O_TRACESYSGOOD);
@@ -41,14 +42,15 @@ int run_tracer(pid_t pid)
 		num_args = syscalls_64_g[(size_t)reg.orig_rax].nb_params;
 		for (i = 0; i < num_args; i++)
 		{
+			arg = get_syscall_arg(reg, i);
 			if (syscalls_64_g[(size_t)reg.orig_rax].params[i] == VARARGS)
 				printf("...");
 			else
-				printf("%#lx", get_syscall_arg(reg, i));
+				printf("%#lx", arg);
 			if (i < num_args - 1)
 				printf(", ");
 		}
-
+		fflush(stdout);
 		if (wait_for_syscall(pid))
 			break;
 		/* print return value of syscall */
