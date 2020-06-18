@@ -10,23 +10,23 @@ strace_0: strace_0.c $(HEADERS)
 strace_1: strace_1.c $(HEADERS)
 		$(CC) $(CFLAGS) strace_1.c -o $@
 
-strace_2: strace_2.o $(HEADERS)
-		$(CC) $(CFLAGS) -o $@ $^
+strace_2: strace_2.c $(HEADERS)
+		$(CC) $(CFLAGS) strace_2.c -o $@
 
-strace_3: strace_3.o $(HEADERS)
-		$(CC) $(CFLAGS) -o $@ $^
+strace_3: strace_3.c $(HEADERS)
+		$(CC) $(CFLAGS) strace_3.c -o $@
 
-strace_4: strace_4.o $(HEADERS)
-		$(CC) $(CFLAGS) -o $@ $^
+strace_4: strace_4.c $(HEADERS)
+		$(CC) $(CFLAGS) strace_4.c -o $@
 
-strace_5: strace_5.o $(HEADERS)
-		$(CC) $(CFLAGS) -o $@ $^
+strace_5: strace_5.c $(HEADERS)
+		$(CC) $(CFLAGS) strace_5.c -o $@
 
-strace_6: strace_6.o $(HEADERS)
-		$(CC) $(CFLAGS) -o $@ $^
+strace_6: strace_6.c $(HEADERS)
+		$(CC) $(CFLAGS) strace_6.c -o $@
 
-strace_7: strace_7.o $(HEADERS)
-		$(CC) $(CFLAGS) -o $@ $^
+strace_7: strace_7.c $(HEADERS)
+		$(CC) $(CFLAGS) strace_7.c -o $@
 
 
 clean:
