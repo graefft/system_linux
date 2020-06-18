@@ -35,11 +35,11 @@ int tracer(pid_t pid)
 		ptrace(PTRACE_GETREGS, pid, 0, &reg);
 		syscall = (syscalls_64_g[(size_t)reg.orig_rax].name);
 		printf("%s", syscall);
+		fflush(stdout);
 		if (wait_for_syscall(pid))
 			break;
 		ptrace(PTRACE_GETREGS, pid, 0, &reg);
-		printf(" = %lx\n", (unsigned long)reg.rax);
-		fflush(stdout);
+		printf(" = %#lx\n", (unsigned long)reg.rax);
 	}
 	return (1);
 }
