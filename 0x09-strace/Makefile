@@ -30,4 +30,4 @@ strace_7: strace_7.c $(HEADERS)
 
 
 clean:
-		rm *.o strace_0.c
+		rm *.o strace_0.c strace_1.c strace_2.c strace_3.c
