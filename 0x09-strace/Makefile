@@ -14,7 +14,7 @@ strace_2: strace_2.c $(HEADERS)
 		$(CC) $(CFLAGS) strace_2.c -o $@
 
 strace_3: strace_3.c $(HEADERS)
-		$(CC) $(CFLAGS) strace_3.c -o $@
+		$(CC) $(CFLAGS) strace_3.c util.c -o $@
 
 strace_4: strace_4.c $(HEADERS)
 		$(CC) $(CFLAGS) strace_4.c -o $@
