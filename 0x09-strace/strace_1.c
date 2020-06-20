@@ -38,6 +38,7 @@ int run_tracer(pid_t pid)
 			break;
 		putchar('\n');
 	}
+	putchar('\n');
 	return (1);
 }
 
