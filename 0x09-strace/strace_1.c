@@ -2,25 +2,25 @@
 #include "syscalls.h"
 
 /**
- * trace_child - traces child
+ * trace_me- traces child
  * @argv: argv[0] == command, argv++ options for command
  * @env: environment for execve
  * Return: 0 or -1
  */
-int trace_child(char **argv, char **env)
+int trace_me(char **argv, char **env)
 {
-	ptrace(PTRACE_TRACEME, 0, 0, 0);
+	ptrace(PTRACE_TRACEME, 0, NULL, NULL);
 	kill(getpid(), SIGSTOP);
 	execve(argv[0], argv, env);
 	return (0);
 }
 
 /**
- * trace_from_parent - runs tracer from parent
- * @pid: pid of child to be traced
+ * run_tracer - runs tracer from parent
+ * @pid: pid of child process
  * Return: 0 on success
  */
-int trace_from_parent(pid_t pid)
+int run_tracer(pid_t pid)
 {
 	int status;
 	struct user_regs_struct reg;
@@ -36,7 +36,7 @@ int trace_from_parent(pid_t pid)
 		fflush(stdout);
 		if (wait_for_syscall(pid))
 			break;
-		putchar('\n');
+		printf(" = %#lx\n", (unsigned long)regs.rax);
 	}
 	putchar('\n');
 	return (1);
@@ -55,18 +55,17 @@ int wait_for_syscall(pid_t pid)
 	{
 		ptrace(PTRACE_SYSCALL, pid, 0, 0);
 		waitpid(pid, &status, 0);
-		/* (SIGTRAP | 0x80 */
 		if (WIFSTOPPED(status) && WSTOPSIG(status) & 0x80)
 			return (0);
 		if WIFEXITED(status)
 			return (1);
 	}
-	return (1);
+	return (-1);
 }
 
 /**
  * main - executes and traces a given command
- * @argc: number of arguments
+ * @argc: number of argvs
  * @argv: command to trace
  * @env: environment
  * Return: 0 on success, -1 on failures
@@ -83,11 +82,11 @@ int main(int argc, char **argv, char **env)
 	pid = fork();
 	if (pid == 0)
 	{
-		tracee(argv + 1, env);
+		trace_child(argv + 1, env);
 	}
 	else if (pid > 0)
 	{
-		tracer(pid);
+		trace_from_parent(pid);
 	}
 	else
 	{
