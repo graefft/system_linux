@@ -32,13 +32,10 @@ int run_tracer(pid_t pid)
 		if (wait_for_syscall(pid))
 			break;
 		ptrace(PTRACE_GETREGS, pid, 0, &reg);
-		printf("%s", syscalls_64_g[(size_t) reg.orig_rax].name);
-		fflush(stdout);
+		fprintf(stderr, "%s\n", syscalls_64_g[(size_t) reg.orig_rax].name);
 		if (wait_for_syscall(pid))
 			break;
-		printf(" = %#lx\n", (unsigned long)reg.rax);
 	}
-	putchar('\n');
 	return (1);
 }
 
@@ -60,7 +57,7 @@ int wait_for_syscall(pid_t pid)
 		if WIFEXITED(status)
 			return (1);
 	}
-	return (-1);
+	return (1);
 }
 
 /**
