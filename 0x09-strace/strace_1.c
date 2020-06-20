@@ -36,7 +36,7 @@ int run_tracer(pid_t pid)
 		fflush(stdout);
 		if (wait_for_syscall(pid))
 			break;
-		printf(" = %#lx\n", (unsigned long)regs.rax);
+		printf(" = %#lx\n", (unsigned long)reg.rax);
 	}
 	putchar('\n');
 	return (1);
@@ -82,11 +82,11 @@ int main(int argc, char **argv, char **env)
 	pid = fork();
 	if (pid == 0)
 	{
-		trace_child(argv + 1, env);
+		trace_me(argv + 1, env);
 	}
 	else if (pid > 0)
 	{
-		trace_from_parent(pid);
+		run_tracer(pid);
 	}
 	else
 	{
