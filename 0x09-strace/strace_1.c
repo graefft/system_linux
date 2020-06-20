@@ -32,9 +32,10 @@ int run_tracer(pid_t pid)
 		if (wait_for_syscall(pid))
 			break;
 		ptrace(PTRACE_GETREGS, pid, 0, &reg);
-		fprintf(stderr, "%s\n", syscalls_64_g[(size_t) reg.orig_rax].name);
+		fprintf(stderr, "%s", syscalls_64_g[(size_t) reg.orig_rax].name);
 		if (wait_for_syscall(pid))
 			break;
+		putchar('\n');
 	}
 	return (1);
 }
