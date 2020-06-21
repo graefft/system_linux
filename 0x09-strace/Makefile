@@ -17,16 +17,16 @@ strace_3: strace_3.c $(HEADERS)
 		$(CC) $(CFLAGS) strace_3.c util.c -o $@
 
 strace_4: strace_4.c $(HEADERS)
-		$(CC) $(CFLAGS) strace_4.c -o $@
+		$(CC) $(CFLAGS) strace_4.c util.c -o $@
 
 strace_5: strace_5.c $(HEADERS)
-		$(CC) $(CFLAGS) strace_5.c -o $@
+		$(CC) $(CFLAGS) strace_5.c util.c -o $@
 
 strace_6: strace_6.c $(HEADERS)
-		$(CC) $(CFLAGS) strace_6.c -o $@
+		$(CC) $(CFLAGS) strace_6.c util.c -o $@
 
 strace_7: strace_7.c $(HEADERS)
-		$(CC) $(CFLAGS) strace_7.c -o $@
+		$(CC) $(CFLAGS) strace_7.c util.c -o $@
 
 
 clean:
