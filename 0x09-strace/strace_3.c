@@ -94,7 +94,7 @@ int main(int argc, char **argv, char **env)
 	}
 	else if (pid > 0)
 	{
-		run_tracer(pid, argc, argv, env);
+		run_tracer(pid);
 	}
 	else
 	{
