@@ -2,20 +2,6 @@
 #include "syscalls.h"
 
 /**
- * trace_me - traces child
- * @argv: arguments
- * @env: environment
- * Return: 0 or -1
- */
-int trace_me(char **argv, char **env)
-{
-	ptrace(PTRACE_TRACEME, 0, 0, 0);
-	kill(getpid(), SIGSTOP);
-	execve(argv[0], argv, env);
-	return (0);
-}
-
-/**
  * run_tracer - runs tracer from parent
  * @pid: pid of child to be traced
  * Return: 0 on success
@@ -108,7 +94,7 @@ int main(int argc, char **argv, char **env)
 	}
 	else if (pid > 0)
 	{
-		run_tracer(pid);
+		run_tracer(pid, argc, argv, env);
 	}
 	else
 	{
