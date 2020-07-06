@@ -31,7 +31,7 @@ int run_tracer(pid_t pid)
 			arg = get_syscall_arg(reg, i);
 			if (syscalls_64_g[(size_t)reg.orig_rax].params[i] == VARARGS)
 				printf("...");
-			else
+			else if (syscalls_64_g[(size_t)reg.orig_rax].params[i] != VOID)
 				printf("%#lx", arg);
 			if (i < num_args - 1)
 				printf(", ");
