@@ -42,7 +42,7 @@ int tprintf(char const *format, ...)
 	/* lock mutex */
 	if (pthread_mutex_lock(&lock_01) != 0)
 	{
-		printf("Mutex lock failed\n");
+		printf("Mutex Lock Failed\n");
 		exit(EXIT_FAILURE);
 	}
 
@@ -51,11 +51,7 @@ int tprintf(char const *format, ...)
 	vprintf(format, arguments);
 
 	/* unlock mutex */
-	if (pthread_mutex_unlock(&lock_01) != 0)
-	{
-		printf("Mutex unlock failed\n");
-		exit(EXIT_FAILURE);
-	}
+	pthread_mutex_unlock(&lock_01);
 
 	va_end(arguments);
 	return (EXIT_SUCCESS);
