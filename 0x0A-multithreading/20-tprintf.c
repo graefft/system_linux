@@ -35,6 +35,10 @@ void mutex_destroy(void)
  */
 int tprintf(char const *format, ...)
 {
+	va_list arguments;
+
+	va_start(arguments, format);
+
 	/* lock mutex */
 	if (pthread_mutex_lock(&lock_01) != 0)
 	{
@@ -43,7 +47,8 @@ int tprintf(char const *format, ...)
 	}
 
 	/* print calling thread ID, and string */
-	printf("[%lu] %s", pthread_self(), format);
+	printf("[%lu] ", pthread_self());
+	vprintf(format, arguments);
 
 	/* unlock mutex */
 	if (pthread_mutex_unlock(&lock_01) != 0)
@@ -51,5 +56,7 @@ int tprintf(char const *format, ...)
 		printf("Mutex unlock failed\n");
 		exit(EXIT_FAILURE);
 	}
+
+	va_end(arguments);
 	return (EXIT_SUCCESS);
 }
