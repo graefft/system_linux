@@ -8,8 +8,8 @@ One folder devoted to x86 Assembly
 
 DIRECTORY | DESCRIPTION
 ----|----
-[0x00-ls](./0x00-ls) | Implement simple 'ls' in C
-[0x01-getline](./0x01-getline) | Implement 'getline' in C
+[0x00-ls](./0x00-ls) | Implement simple `ls` in C
+[0x01-getline](./0x01-getline) | Implement `getline` in C
 [0x03-proc_filesystem](./0x03-proc_filesystem) | Exploring `proc` filesystem and manipulating via `maps` and `mem`
 [0x05-libasm](./0x05-libasm) | A few functions in x86 assembly, `strlen`, `memcpy`, `puts`
 [0x06-signals](./0x06-signals) | Creating and retrieving signals using `SIGINT`, `SIGKILL`, etc.
