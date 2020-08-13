@@ -1,5 +1,9 @@
 # SYSTEM_LINUX
 
+Mostly C projects - attempts to recreate parts of standard programs like `ls`, `getline`, and `strace`  
+Also exploring signals in C, CPython, and basic multithreading  
+One folder devoted to x86 Assembly
+
 ![strace](images/strace_ss.png?raw=true "Strace")
 
 DIRECTORY | DESCRIPTION
