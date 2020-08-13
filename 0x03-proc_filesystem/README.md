@@ -1,10 +1,10 @@
 ## 0x03. Python - /proc filesystem
 
-What is the `/proc filesystem`
-What is the `/proc/maps` file
-What is the `/proc/mem` file
-What is the link between maps and mem
-How does the virtual memory map into the RAM
+What is the `/proc filesystem`  
+What is the `/proc/maps` file  
+What is the `/proc/mem` file  
+What is the link between maps and mem  
+How does the virtual memory map into the RAM  
 
 ### Requirements
 Ubuntu 14.04 LTS 
