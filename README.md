@@ -1,5 +1,6 @@
 # SYSTEM_LINUX
 
+![fun with strace](http://images/strace_ss.png)
 
 DIRECTORY | DESCRIPTION
 ----|----
