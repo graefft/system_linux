@@ -1,6 +1,6 @@
 # SYSTEM_LINUX
 
-![fun with strace](http://images/strace_ss.png)
+![strace](images/strace_ss.png?raw=true "Strace")
 
 DIRECTORY | DESCRIPTION
 ----|----
