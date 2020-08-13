@@ -10,7 +10,7 @@ DIRECTORY | DESCRIPTION
 [0x06-signals](./0x06-signals) | Creating and retrieving signals using `SIGINT`, `SIGKILL`, etc.
 [0x08-CPython](./0x08_CPython) | Using the `python.h` header to print information about PyObjects in C
 [0x09-strace](./0x09-strace) | Using `ptrace` to trace programs and print info about their syscalls
-[0x0A-multithreading](./0x0A-multithreading | Work in progress: making threads and trying to implement Gaussian Blur in C
+[0x0A-multithreading](./0x0A-multithreading) | Work in progress: making threads and trying to implement Gaussian Blur in C
 
 
 ### Author
