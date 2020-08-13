@@ -1,19 +1,21 @@
 # 0x08. CPython
 
 ## About
-Solved tasks from Holberton School's System Programming & Algorithm - Linux Programming curriculum
+Exploring CPython using the Python.h header
 
-### Description
-Write the big O notations for python lists operations   
-Create C function that prints basic info about Python lists   
-Create two C functions that print basic info about Python objects    
-Create three C functions that print basic info about Python float objects   
-Create a function that prints Python strings  
-Create a function that prints Python integers  
+### Files
+FILE | DESCRIPTION
+----|----
+[0-python_lists_bigO](./0-python_lists_bigO) | Big O notations for python lists operations   
+[1-python.c](./1-python.c) | Function that prints basic info about Python lists   
+[2-python.c](./2-python.c) | Two C functions that print basic info about Python objects    
+[3-python.c])./3-python.c) | Functions that print basic info about Python float objects   
+[4-python.c](./4-python.c) | Function that prints Python strings  
+[5-python.c](./5-python.c) | Function that prints Python integers  
 
 ### Environment
 <strong>OS:</strong> Ubuntu 14.04 LTS   
-<strong>Languages</strong>Python 3.4 / C gcc 4.8.4 
+<strong>Language:</strong> C (gcc 4.8.4)  
 <strong>Style:</strong> PEP8  
 
 ### Author
