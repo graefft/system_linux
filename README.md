@@ -1,11 +1,15 @@
 # SYSTEM_LINUX
 
-![fun with strace](http://images/strace_ss.png)
+Mostly C projects - attempts to recreate parts of standard programs like `ls`, `getline`, and `strace`  
+Also exploring signals in C, CPython, and basic multithreading  
+One folder devoted to x86 Assembly
+
+![strace](images/strace_ss.png?raw=true "Strace")
 
 DIRECTORY | DESCRIPTION
 ----|----
-[0x00-ls](./0x00-ls) | Implement simple 'ls' in C
-[0x01-getline](./0x01-getline) | Implement 'getline' in C
+[0x00-ls](./0x00-ls) | Implement simple `ls` in C
+[0x01-getline](./0x01-getline) | Implement `getline` in C
 [0x03-proc_filesystem](./0x03-proc_filesystem) | Exploring `proc` filesystem and manipulating via `maps` and `mem`
 [0x05-libasm](./0x05-libasm) | A few functions in x86 assembly, `strlen`, `memcpy`, `puts`
 [0x06-signals](./0x06-signals) | Creating and retrieving signals using `SIGINT`, `SIGKILL`, etc.
