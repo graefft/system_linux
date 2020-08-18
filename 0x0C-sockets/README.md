@@ -1,5 +1,5 @@
 # 0x0C. Sockets
-----
+
 
 ## Objectives
 What is a socket and how it is represented on a Linux/UNIX system  
@@ -12,14 +12,12 @@ How to connect to a remote application
 What is the the HTTP protocol  
 How to create a simple HTTP server  
 
-----
 
 ## Environment
 <strong>OS:</strong> Ubuntu 14.04 LTS  
 <strong>Style:</strong> [Betty](https://github.com/holbertonschool/Betty/blob/master/betty-style.pl) style  
 <strong>Compiler:</strong> gcc 4.8.4 -Wall -Werror -Wextra -pedantic  
 
-----
 
 ## Files
 FILE | DESCRIPTION
