@@ -18,20 +18,19 @@ int main(int argc, char **argv)
 	if (argc < 3)
 	{
 		printf("Usage: %s <host> <port>\n", argv[0]);
-		exit(EXIT_FAILURE);
+		return (EXIT_FAILURE);
 	}
 
 	host = gethostbyname(argv[1]);
 	if (!host)
-		exit(EXIT_FAILURE);
+		return (EXIT_FAILURE);
 
 	socket_fd = socket(AF_INET, SOCK_STREAM, 0);
 	if	(socket_fd < 0)
 	{
 		printf("ERROR IN SOCKET\n");
-		exit(EXIT_FAILURE);
+		return (EXIT_FAILURE);
 	}
-	memset(&address, 0, sizeof(address));
 	address.sin_family = AF_INET;
 	address.sin_port = htons(port);
 	if (connect(socket_fd, (struct sockaddr *) &address,
