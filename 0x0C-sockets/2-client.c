@@ -11,7 +11,7 @@
  */
 int main(int argc, char **argv)
 {
-	struct sockaddr_in server_address;
+	struct sockaddr_in address;
 	int socket_fd;
 
 	if (argc < 3)
@@ -26,15 +26,16 @@ int main(int argc, char **argv)
 		printf("ERROR IN SOCKET\n");
 		exit(EXIT_FAILURE);
 	}
-	memset(&server_address, 0, sizeof(server_address));
-	server_address.sin_family = AF_INET;
-	server_address.sin_port = htons(port);
-	if (connect(socket_fd, (struct sockaddr *) &server_address,
-		sizeof(server_address)) < 0)
+	memset(&address, 0, sizeof(address));
+	address.sin_family = AF_INET;
+	address.sin_port = htons(port);
+	if (connect(socket_fd, (struct sockaddr *) &address,
+		sizeof(address)) < 0)
 	{
 		printf("ERROR IN CONNECTION\n");
 		exit(0);
 	}
+	printf("Connected to %s:%s\n", argv[1], argv[2]);
 	close(socket_fd);
 	return (EXIT_SUCCESS);
 }
