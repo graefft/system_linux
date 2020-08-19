@@ -19,7 +19,7 @@ int accept_connection(int socket_fd)
 				(socklen_t *) &client_len);
 	if (data_socket < 0)
 	{
-		printf("Sorry but the connection was not accepted\n");
+		perror("accept");
 		return (-1);
 	}
 	printf("Client connected: %s\n", inet_ntoa(client.sin_addr));
@@ -37,13 +37,14 @@ int bind_socket(int socket_fd)
 	int status = -1;
 	struct sockaddr_in rem;
 
+	memset(&rem, 0, sizeof(rem));
 	rem.sin_family = AF_INET;
 	rem.sin_addr.s_addr = htonl(INADDR_ANY);
 	rem.sin_port = htons(port);
 	status = bind(socket_fd, (struct sockaddr *)&rem, sizeof(rem));
 	if (status < 0)
 	{
-		printf("Wow, I'm sorry but we can't seem to bind right now\n");
+		perror("bind");
 		return (-1);
 	}
 	return (status);
