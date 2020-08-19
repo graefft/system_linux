@@ -27,7 +27,7 @@ int accept_and_receive(int socket_fd)
 	if (recv(data_socket, buffer, BUFSIZ, 0) == -1)
 	{
 		perror("recv");
-		return (-1);
+		exit(1);
 	}
 	printf("Message received: \"%s\"\n", buffer);
 	return (0);
@@ -37,24 +37,29 @@ int accept_and_receive(int socket_fd)
  * bind_socket - assigns address with bind()
  *
  * @socket_fd: fd of created socket
- * Return: status or -1 on failure
+ * Return: 0 or exit(1) on failure
  */
 int bind_socket(int socket_fd)
 {
-	int status = -1;
 	struct sockaddr_in rem;
 
 	memset(&rem, 0, sizeof(rem));
 	rem.sin_family = AF_INET;
 	rem.sin_addr.s_addr = htonl(INADDR_ANY);
 	rem.sin_port = htons(port);
-	status = bind(socket_fd, (struct sockaddr *)&rem, sizeof(rem));
-	if (status < 0)
+
+	if (setsockopt(socket_fd, SOL_SOCKET, SO_REUSEADDR, &rem, sizeof(int)) == -1)
+	{
+		perror("setsockopt");
+		exit(1);
+	}
+
+	if (bind(socket_fd, (struct sockaddr *)&rem, sizeof(rem)) < 0)
 	{
 		perror("bind");
-		return (-1);
+		exit(1);
 	}
-	return (status);
+	return (0);
 }
 
 
@@ -70,7 +75,7 @@ int main(void)
 	socket_fd = socket(AF_INET, SOCK_STREAM, 0);
 	if (socket_fd < 0)
 	{
-		printf("I don't think that socket creation worked\n");
+		perror("socket");
 		return (EXIT_FAILURE);
 	}
 
