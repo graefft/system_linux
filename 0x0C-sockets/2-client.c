@@ -38,6 +38,8 @@ int main(int argc, char **argv)
 	}
 	hints.ai_family = AF_INET;
 	hints.ai_socktype = SOCK_STREAM;
+	hints.ai_protocol = 0;
+	hints.ai_flags = AI_NUMERICSERV;
 	if (connect(socket_fd, res->ai_addr, res->ai_addrlen) < 0)
 	{
 		printf("ERROR IN CONNECTION\n");
