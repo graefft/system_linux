@@ -12,6 +12,7 @@
 int main(int argc, char **argv)
 {
 	struct sockaddr_in address;
+	struct hostent *host;
 	int socket_fd;
 
 	if (argc < 3)
@@ -19,6 +20,10 @@ int main(int argc, char **argv)
 		printf("Usage: %s <host> <port>\n", argv[0]);
 		exit(EXIT_FAILURE);
 	}
+
+	host = gethostbyname(argv[1]);
+	if (!host)
+		exit(EXIT_FAILURE);
 
 	socket_fd = socket(AF_INET, SOCK_STREAM, 0);
 	if	(socket_fd < 0)
