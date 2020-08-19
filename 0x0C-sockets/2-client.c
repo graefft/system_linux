@@ -1,7 +1,5 @@
 #include "sockets.h"
 
-#define port 12345
-
 /**
  * main - connect to server on port 12345
  *
@@ -11,7 +9,7 @@
  */
 int main(int argc, char **argv)
 {
-	struct sockaddr_in address;
+	struct sockaddr_in server;
 	struct hostent *host;
 	int socket_fd;
 
@@ -31,10 +29,12 @@ int main(int argc, char **argv)
 		printf("ERROR IN SOCKET\n");
 		return (EXIT_FAILURE);
 	}
-	address.sin_family = AF_INET;
-	address.sin_port = htons(port);
-	if (connect(socket_fd, (struct sockaddr *) &address,
-		sizeof(address)) < 0)
+	server.sin_family = AF_INET;
+	server.sin_addr.s_addr =
+		inet_addr(inet_ntoa(*(struct in_addr *)host->h_addr));
+	server.sin_port = htons(atoi(argv[2]));
+	if (connect(socket_fd, (struct sockaddr *) &server,
+		sizeof(server)) < 0)
 	{
 		printf("ERROR IN CONNECTION\n");
 		exit(0);
