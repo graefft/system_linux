@@ -10,5 +10,6 @@
 #include <sys/types.h>
 
 #include <arpa/inet.h>
+#include <netdb.h>
 
 #endif /* __SOCKETS_H__ */
