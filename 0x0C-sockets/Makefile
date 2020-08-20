@@ -11,7 +11,10 @@ $(TASK0): $(TASK0).c sockets_http.h server.c
 $(TASK1): $(TASK1).c sockets_http.h server.c
 	$(CC) $(CFLAGS) -o $@ $^
 
-.PHONY: todo_api_0 todo_api_1 clean
+$(TASK2): $(TASK2).c sockets_http.h server.c
+	$(CC) $(CFLAGS) -o $@ $^
+
+.PHONY: clean run
 
 clean:
 	rm $(TASK0) $(TASK1) $(TASK2)
