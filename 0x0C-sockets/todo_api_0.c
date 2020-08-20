@@ -80,5 +80,6 @@ int main(void)
 	if (accept_and_print(server_fd) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 
+	close(server_fd);
 	return (EXIT_SUCCESS);
 }
