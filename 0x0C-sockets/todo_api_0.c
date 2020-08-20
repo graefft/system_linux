@@ -9,11 +9,9 @@
  */
 void print_first_line(char *buffer)
 {
-	char *DELIM = " \n\r\t";
-
-	printf("Method: %s\n", strtok(buffer, DELIM));
-	printf("Path: %s\n", strtok(NULL, DELIM));
-	printf("Version: %s\n", strtok(NULL, DELIM));
+	printf("Method: %s\n", strtok(buffer, " "));
+	printf("Path: %s\n", strtok(NULL, " "));
+	printf("Version: %s\n", strtok(NULL, "\r"));
 }
 
 /**
