@@ -39,7 +39,7 @@ int accept_and_print(int server_fd)
 			perror("accept");
 			exit(1);
 		}
-		printf("Client connected: %s\n", buffer);
+		printf("Client connected: %s\n", inet_ntoa(client.sin_addr));
 		bytes_received = recv(client_fd, buffer, BUFSIZ, 0);
 		if (bytes_received < 0)
 		{
