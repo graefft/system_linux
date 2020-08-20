@@ -19,6 +19,7 @@ void print_header_info(char *buffer)
 		query = strtok_r(NULL, "\r", &saveptr);
 		if (query == NULL)
 			break;
+		query++;
 		printf("Header: \"%s\" -> \"%s\"\n", value, query);
 	}
 }
