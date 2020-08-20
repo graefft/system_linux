@@ -11,7 +11,7 @@ void print_first_line(char *buffer)
 {
 	printf("Method: %s\n", strtok(buffer, " "));
 	printf("Path: %s\n", strtok(NULL, " "));
-	printf("Version: %s\n", strtok(NULL, "\r"));
+	printf("Version: %s\n", strtok(NULL, " \r"));
 }
 
 /**
