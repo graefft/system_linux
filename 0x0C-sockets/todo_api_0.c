@@ -40,6 +40,7 @@ int accept_and_print(int server_fd)
 			exit(1);
 		}
 		printf("Client connected: %s\n", inet_ntoa(client.sin_addr));
+		memset(&*buffer, 0, BUFSIZ);
 		bytes_received = recv(client_fd, buffer, BUFSIZ, 0);
 		if (bytes_received < 0)
 		{
