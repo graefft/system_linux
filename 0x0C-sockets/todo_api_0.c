@@ -73,12 +73,12 @@ int main(void)
 {
 	int server_fd;
 
+	setbuf(stdout, NULL);
 	server_fd = create_socket();
 	if (server_fd == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 
-	if (accept_and_print(server_fd) == EXIT_FAILURE)
-		return (EXIT_FAILURE);
+	accept_and_print(server_fd);
 
 	close(server_fd);
 	return (EXIT_SUCCESS);
