@@ -34,18 +34,17 @@ int main(void)
 	sock_id = socket(AF_INET, SOCK_STREAM, 0);
 	if (sock_id == -1)
 	{
-		printf("Socket create failure\n");
+		perror("socket");
 		return (EXIT_FAILURE);
 	}
 	status = bind_socket(sock_id);
 	if (status == -1)
 	{
-		printf("Bind didn't work\n");
+		perror("bind");
 		return (EXIT_FAILURE);
 	}
 	listen(sock_id, 3);
 	printf("Server listening on port %d\n", port);
-
 	pause();
 	return (EXIT_SUCCESS);
 }
