@@ -15,7 +15,7 @@ int main(int argc, char **argv)
 
 	if (argc < 3)
 	{
-		fprintf(stderr, "Usage: %s <host> <port>\n", argv[0]);
+		printf("Usage: %s <host> <port>\n", argv[0]);
 		return (EXIT_FAILURE);
 	}
 	if (gethostname(hostbuffer, 256) != 0)
