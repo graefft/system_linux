@@ -42,7 +42,7 @@ int main(int argc, char **argv)
 	if (connect(socket_fd, res->ai_addr, res->ai_addrlen) < 0)
 	{
 		perror("connect");
-		return (EXIT_FAILURE);
+		exit(1);
 	}
 	printf("Connected to %s:%s\n", argv[1], argv[2]);
 	freeaddrinfo(res);
