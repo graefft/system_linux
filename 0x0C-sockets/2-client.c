@@ -33,7 +33,7 @@ int main(int argc, char **argv)
 	if	(socket_fd < 0)
 	{
 		perror("socket");
-		return (EXIT_FAILURE);
+		exit(1);
 	}
 	hints.ai_family = AF_INET;
 	hints.ai_socktype = SOCK_STREAM;
