@@ -21,13 +21,13 @@ int main(int argc, char **argv)
 	if (gethostname(hostbuffer, 256) != 0)
 	{
 		perror("gethostname");
-		return (EXIT_FAILURE);
+		exit(1);
 	}
 	memset(&hints, 0, sizeof(hints));
 	if (getaddrinfo(argv[1], argv[2], &hints, &res) != 0)
 	{
 		perror("getaddrinfo");
-		return (EXIT_FAILURE);
+		exit(1);
 	}
 	socket_fd = socket(res->ai_family, res->ai_socktype, res->ai_protocol);
 	if	(socket_fd < 0)
@@ -38,7 +38,6 @@ int main(int argc, char **argv)
 	hints.ai_family = AF_INET;
 	hints.ai_socktype = SOCK_STREAM;
 	hints.ai_protocol = 0;
-	hints.ai_flags = AI_NUMERICSERV;
 	if (connect(socket_fd, res->ai_addr, res->ai_addrlen) < 0)
 	{
 		perror("connect");
