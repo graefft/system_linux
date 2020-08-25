@@ -13,10 +13,10 @@ int main(int argc, char **argv)
 	struct addrinfo hints, *res;
 	int socket_fd;
 
-	if (argc < 3)
+	if (argc != 3)
 	{
 		printf("Usage: %s <host> <port>\n", argv[0]);
-		return (EXIT_FAILURE);
+		exit(1);
 	}
 	if (gethostname(hostbuffer, 256) != 0)
 	{
@@ -24,7 +24,7 @@ int main(int argc, char **argv)
 		exit(1);
 	}
 	memset(&hints, 0, sizeof(hints));
-	if (getaddrinfo(argv[1], argv[2], &hints, &res) != 0)
+	if (getaddrinfo(hostbuffer, argv[2], &hints, &res) != 0)
 	{
 		perror("getaddrinfo");
 		exit(1);
